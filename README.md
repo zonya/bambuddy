@@ -25,6 +25,7 @@ zaseban uređaj sa entitetima:
 | `sensor` WiFi signal | dBm (dijagnostika) |
 | `binary_sensor` Povezan | connectivity |
 | `binary_sensor` Vrata | door (X1/P1S/H2…) |
+| `camera` Kamera | live MJPEG + JPEG snapshot (preko stream-tokena) |
 
 ## Instalacija (HACS)
 

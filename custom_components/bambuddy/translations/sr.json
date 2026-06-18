@@ -35,6 +35,9 @@
     "binary_sensor": {
       "connected": { "name": "Povezan" },
       "door_open": { "name": "Vrata" }
+    },
+    "camera": {
+      "camera": { "name": "Kamera" }
     }
   }
 }

@@ -9,7 +9,7 @@ from .api import BambuddyApi
 from .const import CONF_API_KEY, CONF_HOST, DOMAIN
 from .coordinator import BambuddyCoordinator
 
-PLATFORMS = ["sensor", "binary_sensor"]
+PLATFORMS = ["sensor", "binary_sensor", "camera"]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:

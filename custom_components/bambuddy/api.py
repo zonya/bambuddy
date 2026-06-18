@@ -24,6 +24,10 @@ class BambuddyApi:
         self._base = host.rstrip("/")
         self._headers = {"X-API-Key": api_key}
 
+    @property
+    def session(self) -> aiohttp.ClientSession:
+        return self._session
+
     async def _get(self, path: str):
         url = f"{self._base}/api/v1{path}"
         try:
@@ -49,3 +53,41 @@ class BambuddyApi:
         """Vrati real-time status jednog štampača."""
         data = await self._get(f"/printers/{printer_id}/status")
         return data if isinstance(data, dict) else {}
+
+    # --- Kamera (preko reusable stream-tokena, važi 60 min) ---
+
+    async def create_stream_token(self) -> str:
+        """Mintuj token za pristup kameri (snapshot/stream)."""
+        url = f"{self._base}/api/v1/printers/camera/stream-token"
+        try:
+            async with self._session.post(
+                url, headers=self._headers, timeout=aiohttp.ClientTimeout(total=15)
+            ) as resp:
+                if resp.status in (401, 403):
+                    raise BambuddyAuthError(f"Odbijen API ključ (HTTP {resp.status})")
+                resp.raise_for_status()
+                return (await resp.json())["token"]
+        except aiohttp.ClientError as err:
+            raise BambuddyApiError(f"Mrežna greška (stream-token): {err}") from err
+
+    def snapshot_url(self, printer_id: int, token: str) -> str:
+        return f"{self._base}/api/v1/printers/{printer_id}/camera/snapshot?token={token}"
+
+    def stream_url(self, printer_id: int, token: str, fps: int = 10) -> str:
+        return (
+            f"{self._base}/api/v1/printers/{printer_id}/camera/stream"
+            f"?token={token}&fps={fps}"
+        )
+
+    async def get_snapshot(self, printer_id: int, token: str) -> bytes | None:
+        """Vrati JPEG snimak kamere, ili None ako nije dostupan."""
+        try:
+            async with self._session.get(
+                self.snapshot_url(printer_id, token),
+                timeout=aiohttp.ClientTimeout(total=20),
+            ) as resp:
+                if resp.status >= 400:
+                    return None
+                return await resp.read()
+        except aiohttp.ClientError:
+            return None
