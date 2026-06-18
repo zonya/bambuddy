@@ -1,0 +1,40 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bambuddy",
+        "description": "Connect to your Bambuddy server using an API key (create one in Bambuddy under Settings → API Keys, with the \"read status\" permission).",
+        "data": {
+          "host": "Server URL",
+          "api_key": "API key"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "API key rejected.",
+      "cannot_connect": "Cannot reach the Bambuddy server.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This Bambuddy server is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "state": { "name": "State" },
+      "subtask_name": { "name": "Job" },
+      "progress": { "name": "Progress" },
+      "remaining_time": { "name": "Remaining" },
+      "layer": { "name": "Layer" },
+      "total_layers": { "name": "Total layers" },
+      "nozzle_temp": { "name": "Nozzle temperature" },
+      "bed_temp": { "name": "Bed temperature" },
+      "chamber_temp": { "name": "Chamber temperature" },
+      "wifi_signal": { "name": "Wi-Fi signal" }
+    },
+    "binary_sensor": {
+      "connected": { "name": "Connected" },
+      "door_open": { "name": "Door" }
+    }
+  }
+}

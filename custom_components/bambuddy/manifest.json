@@ -1,0 +1,12 @@
+{
+  "domain": "bambuddy",
+  "name": "Bambuddy",
+  "documentation": "https://github.com/zonya/bambuddy",
+  "issue_tracker": "https://github.com/zonya/bambuddy/issues",
+  "dependencies": [],
+  "codeowners": ["@zonya"],
+  "requirements": [],
+  "version": "0.1.0",
+  "config_flow": true,
+  "iot_class": "local_polling"
+}

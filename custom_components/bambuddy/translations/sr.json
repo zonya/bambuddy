@@ -1,0 +1,40 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bambuddy",
+        "description": "Poveži se na Bambuddy server preko API ključa (napravi ga u Bambuddy-ju pod Settings → API Keys, sa dozvolom „read status“).",
+        "data": {
+          "host": "URL servera",
+          "api_key": "API ključ"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "API ključ je odbijen.",
+      "cannot_connect": "Ne mogu da dohvatim Bambuddy server.",
+      "unknown": "Neočekivana greška."
+    },
+    "abort": {
+      "already_configured": "Ovaj Bambuddy server je već podešen."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "state": { "name": "Stanje" },
+      "subtask_name": { "name": "Zadatak" },
+      "progress": { "name": "Napredak" },
+      "remaining_time": { "name": "Preostalo" },
+      "layer": { "name": "Sloj" },
+      "total_layers": { "name": "Ukupno slojeva" },
+      "nozzle_temp": { "name": "Temperatura dizne" },
+      "bed_temp": { "name": "Temperatura ploče" },
+      "chamber_temp": { "name": "Temperatura komore" },
+      "wifi_signal": { "name": "WiFi signal" }
+    },
+    "binary_sensor": {
+      "connected": { "name": "Povezan" },
+      "door_open": { "name": "Vrata" }
+    }
+  }
+}
