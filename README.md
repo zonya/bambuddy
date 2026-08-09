@@ -44,3 +44,10 @@ zaseban uređaj sa entitetima:
 
 Lista štampača se učitava pri postavljanju. Ako dodaš novi štampač na Bambuddy
 server, reload-uj integraciju da se pojavi novi uređaj.
+
+## ☕ Podrži
+
+Integracija je besplatna i nastaje u slobodno vreme. Ako ti je uštedela veče,
+možeš da [platiš kafu](https://ko-fi.com/zonya2026).
+
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/zonya2026)
